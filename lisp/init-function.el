@@ -4,6 +4,7 @@
 
 ;;; code:
 
+;; 打开.emacs.d/lisp/
 (defun open-lisp-dired ()
   "Used to quickly jump to Emacs configuration files.
 By using the \"find-file function\"."
@@ -35,7 +36,7 @@ By using the \"find-file function\"."
 		  nil 0 nil
 		  (file-name-directory (expand-file-name file)))))
 
- (define-key embark-file-map (kbd "E") #'consult-directory-externally)
+;; (define-key embark-file-map (kbd "E") #'consult-directory-externally)
 ;;打开当前文件的目录
 (defun my-open-current-directory ()
   (interactive)

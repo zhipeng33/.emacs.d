@@ -6,8 +6,8 @@
 ;;=====================
 (require 'init-package)
 (require 'init-basic)
-(require 'init-function.el)
-(require 'init-key_bindings.el)
+(require 'init-function)
+(require 'init-key_bindings)
 
 ;;=====================
 ;; 加载手动配置
