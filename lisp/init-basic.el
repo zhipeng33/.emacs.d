@@ -106,10 +106,6 @@
 
 ;; (setq initial-major-mode 'org-mode)
 
-;; 宽度、高度、透明度
-(setq default-frame-alist '(;; (width . 70)
-                            ;; (height . 30)
-                            (alpha-background . 93)))
 ;; 历史记录
 (use-package savehist
   :ensure nil
@@ -128,6 +124,8 @@
 (use-package saveplace
   :ensure t
   :hook (after-init . (lambda () (save-place-mode t))))
+
+(setq url-proxy-services '(("https" . "127.0.0.1:8889")))
 
 
 (provide 'init-basic)

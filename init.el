@@ -10,6 +10,11 @@
 (require 'init-key_bindings)
 
 ;;=====================
+;; UI
+;;=====================
+(require 'init-ui)
+
+;;=====================
 ;; 加载手动配置
 ;;=====================
 (setq custom-file (expand-file-name "~/.emacs.d/lisp/custom.el"))

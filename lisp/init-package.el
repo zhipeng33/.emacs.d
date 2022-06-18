@@ -20,6 +20,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
 (provide 'init-package)
 ;;; init-package.el ends here
