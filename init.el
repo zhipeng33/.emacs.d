@@ -1,6 +1,10 @@
-;; 递归遍历加载路径
-(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-(load custom-file 'no-error 'no-message)
+;; -*- lexical-binding: t -*-
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;;=====================
+;; 基础启动项
+;;=====================
+(require 'init-package)
 
 ;;=====================
 ;; 加载手动配置
