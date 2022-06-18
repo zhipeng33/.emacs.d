@@ -102,7 +102,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; emacsclient
-(server-mode t)
+;; (server-mode t)
 
 ;; (setq initial-major-mode 'org-mode)
 
