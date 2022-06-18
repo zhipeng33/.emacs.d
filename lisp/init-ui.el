@@ -16,10 +16,10 @@
 (set-scroll-bar-mode nil)
 
 ;; 宽度、高度、透明度
-(setq default-frame-alist '(;; (width . 70)
-                            ;; (height . 30)
+(setq default-frame-alist '((width . 1000)
+                            (height . 10000)
                             (alpha-background . 90)))
-;; (set-frame-parameter nil 'alpha 0.90)
+;; (set-frame-parameter nil 'alpha 1.0)
 
 ;; 关闭GUI功能
 (setq use-file-dialog nil
