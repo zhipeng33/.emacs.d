@@ -21,8 +21,14 @@
                             (alpha-background . 90)))
 ;; (set-frame-parameter nil 'alpha 0.90)
 
+;; 关闭GUI功能
+(setq use-file-dialog nil
+      use-dialog-box nil
+      inhibit-startup-screen t
+      inhibit-startup-message t)
+
 ;; 全屏
-(toggle-frame-fullscreen)
+;; (toggle-frame-fullscreen)
 
 ;; 相对行号
 (use-package emacs
@@ -65,6 +71,17 @@
 ;; 表情符号
 (use-package emojify
   :hook (after-init . global-emojify-mode))
+
+;; 缩进线
+(use-package highlight-indent-guides
+  :defer t
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :config
+  (setq highlight-indent-guides-method 'character
+		highlight-indent-guides-responsive 'stack
+		highlight-indent-guides-auto-odd-face-perc '10
+		highlight-indent-guides-auto-even-face-perc '80
+		highlight-indent-guides-auto-character-face-perc '15))
 
 
 (provide 'init-ui)
