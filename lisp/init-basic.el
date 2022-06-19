@@ -122,7 +122,7 @@
 
 ;; 回到关闭文件前光标的位置
 (use-package saveplace
-  :ensure t
+  :ensure nil
   :hook (after-init . (lambda () (save-place-mode t))))
 
 (setq url-proxy-services '(("https" . "127.0.0.1:8889")))

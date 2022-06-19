@@ -16,9 +16,9 @@
 (set-scroll-bar-mode nil)
 
 ;; 宽度、高度、透明度
-(setq default-frame-alist '((width . 1000)
-                            (height . 10000)
-                            (alpha-background . 90)))
+(setq default-frame-alist '((alpha-background . 90)
+                            (width . 1000)
+                            (height . 10000)))
 ;; (set-frame-parameter nil 'alpha 1.0)
 
 ;; 关闭GUI功能
@@ -28,7 +28,7 @@
       inhibit-startup-message t)
 
 ;; 全屏
-;; (toggle-frame-fullscreen)
+(toggle-frame-fullscreen)
 
 ;; 相对行号
 (use-package emacs
@@ -42,30 +42,31 @@
 (use-package solarized-theme)
 ;; doom主题
 (use-package doom-themes
+  :defer nil
+  :hook (after-init . doom-modeline-mode)  
   :config
   ;; Global settings (defaults)
-  (load-theme 'doom-one t)
-  ;; minibuffer
-  (use-package doom-modeline
-    :hook (after-init . doom-modeline-mode)
-    :config
-    (setq doom-modeline-height 5
-		  doom-modeline-bar-width 4)))
+  (load-theme 'doom-one t))
+
+;; minibuffer
+(use-package doom-modeline
+  :defer nil
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-height 0
+		doom-modeline-bar-width 0))
 
 ;; 彩虹猫进度条
 (use-package nyan-mode
-  :defer t
   :hook (after-init . nyan-mode)
   :config
   (setq nyan-wavy-trail t
 		nyan-animate-nyancat t))
 
 ;; 图标支持
-(use-package all-the-icons
-  :defer t)
+(use-package all-the-icons)
 (use-package all-the-icons-dired
   :if window-system
-  :defer t
   :hook ('dired-mode . 'all-the-icons-dired-mode))
 
 ;; 表情符号
@@ -74,7 +75,6 @@
 
 ;; 缩进线
 (use-package highlight-indent-guides
-  :defer t
   :hook (prog-mode . highlight-indent-guides-mode)
   :config
   (setq highlight-indent-guides-method 'character
@@ -82,6 +82,11 @@
 		highlight-indent-guides-auto-odd-face-perc '10
 		highlight-indent-guides-auto-even-face-perc '80
 		highlight-indent-guides-auto-character-face-perc '15))
+
+;; keycast-mode
+(use-package keycast
+  :init (add-to-list 'global-mode-string '("" keycast-mode-line))
+  :hook (after-init . keycast-mode))
 
 
 (provide 'init-ui)
