@@ -20,6 +20,11 @@
 (require 'init-ui)
 
 ;;=====================
+;; UI
+;;=====================
+(require 'init-lsp)
+
+;;=====================
 ;; 加载手动配置
 ;;=====================
 (setq custom-file (expand-file-name "~/.emacs.d/lisp/custom.el"))

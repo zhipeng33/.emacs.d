@@ -6,11 +6,14 @@
 
 ;; 打开.emacs.d/lisp/
 (defun open-lisp-dired ()
-  "Used to quickly jump to Emacs configuration files.
-By using the \"find-file function\"."
+;;   "Used to quickly jump to Emacs configuration files.
+;; By using the \"find-file function\"."
   (interactive)
   (find-file "~/.emacs.d/lisp"))
 
+(defun open-czp-015-program ()
+  (interactive)
+  (find-file "~/czp-Personal_data/010-Documents/015-program/"))
 
 (shell-command-to-string "explorer.exe C:\\")
 
