@@ -1,10 +1,11 @@
 ;;; Module --- Completion
-;;; comm
-;;;
+;;; 
+;;; Commentary:
 
 ;;; Code:
 (use-package company
-  :hook ((lsp-mode . company-mode)
+  :hook ((after-init . company-mode)
+         (lsp-mode . company-mode)
 		 (prog-mode . company-mode)
 		 (text-mode . company-mode))
   :config

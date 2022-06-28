@@ -15,20 +15,20 @@
 ;; 关闭滚动条
 (set-scroll-bar-mode nil)
 
+;; 全屏
+(toggle-frame-fullscreen)
+
 ;; 宽度、高度、透明度
-(setq default-frame-alist '((alpha-background . 90)
-                            (width . 1000)
-                            (height . 10000)))
-;; (set-frame-parameter nil 'alpha 1.0)
+(setq default-frame-alist '((width . 1000)
+                            (height . 10000)
+                            (alpha-background . 90)))
+;; (set-frame-parameter nil 'alpha 0.9)
 
 ;; 关闭GUI功能
 (setq use-file-dialog nil
       use-dialog-box nil
       inhibit-startup-screen t
       inhibit-startup-message t)
-
-;; 全屏
-(toggle-frame-fullscreen)
 
 ;; 相对行号
 (use-package emacs
@@ -39,32 +39,29 @@
   (display-line-numbers-mode t))
 
 ;; 主题包
-(use-package solarized-theme)
+;; (use-package solarized-theme
+;;   :hook (after-init . solarized-themes))
 ;; doom主题
 (use-package doom-themes
   :defer nil
-  :hook (after-init . doom-modeline-mode)  
-  :config
-  ;; Global settings (defaults)
-  (load-theme 'doom-one t))
+  :config (load-theme 'doom-one t))
 
 ;; minibuffer
 (use-package doom-modeline
   :defer nil
   :hook (after-init . doom-modeline-mode)
-  :config
-  (setq doom-modeline-height 0
-		doom-modeline-bar-width 0))
+  :config (setq doom-modeline-height 0
+		        doom-modeline-bar-width 0))
 
 ;; 彩虹猫进度条
 (use-package nyan-mode
   :hook (after-init . nyan-mode)
-  :config
-  (setq nyan-wavy-trail t
-		nyan-animate-nyancat t))
+  :config (setq nyan-wavy-trail t
+		        nyan-animate-nyancat t))
 
 ;; 图标支持
-(use-package all-the-icons)
+(use-package all-the-icons
+  :if window-system)
 (use-package all-the-icons-dired
   :if window-system
   :hook ('dired-mode . 'all-the-icons-dired-mode))
@@ -75,18 +72,20 @@
 
 ;; 缩进线
 (use-package highlight-indent-guides
-  :hook (prog-mode . highlight-indent-guides-mode)
+  :hook ((after-init . highlight-indent-guides-mode)
+         (prog-mode . highlight-indent-guides-mode))
   :config
   (setq highlight-indent-guides-method 'character
 		highlight-indent-guides-responsive 'stack
-		highlight-indent-guides-auto-odd-face-perc '10
-		highlight-indent-guides-auto-even-face-perc '80
-		highlight-indent-guides-auto-character-face-perc '15))
+		;; highlight-indent-guides-auto-odd-face-perc '10
+		;; highlight-indent-guides-auto-even-face-perc '80
+		;; highlight-indent-guides-auto-character-face-perc '15
+        ))
 
 ;; keycast-mode
 (use-package keycast
-  :init (add-to-list 'global-mode-string '("" keycast-mode-line))
-  :hook (after-init . keycast-mode))
+  :hook (after-init . keycast-mode)
+  :init (add-to-list 'global-mode-string '("" keycast-mode-line)))
 
 
 (provide 'init-ui)

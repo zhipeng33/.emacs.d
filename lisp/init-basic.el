@@ -109,7 +109,7 @@
 ;; 历史记录
 (use-package savehist
   :ensure nil
-  :hook (after-init . savehist-mode)
+  :hook (vertico-mode . savehist-mode)
   :init (setq enable-recursive-minibuffers t ; Allow commands in minibuffers
 	      history-length 1000
 	      savehist-additional-variables '(mark-ring
@@ -123,7 +123,7 @@
 ;; 回到关闭文件前光标的位置
 (use-package saveplace
   :ensure nil
-  :hook (after-init . (lambda () (save-place-mode t))))
+  :init (save-place-mode))
 
 (setq url-proxy-services '(("https" . "127.0.0.1:8889")))
 

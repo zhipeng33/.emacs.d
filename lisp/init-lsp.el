@@ -9,6 +9,7 @@
   (setq lsp-keymap-prefix "C-c l")
   :commands (lsp)
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (after-init . lsp-mode)
          ((c-mode c++mode sh-mode) . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
@@ -42,10 +43,8 @@
 
 ;; lsp-ui
 (use-package lsp-ui
-  :ensure t
-  :defer 1
   :commands (lsp-ui)
-  ;; :hook (lsp-mode . lsp-ui-mode)
+  :hook (after-init . lsp-ui-mode)
   :config
   (setq
    ;; sideline
