@@ -8,7 +8,7 @@
 ;;          |_|
 ;;  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-;;
+;; after-init-hook
 (setq gc-cons-threshold most-positive-fixnum)
 (add-hook 'after-init-hook #'(lambda () (setq gc-cons-threshold 800000)))
 
@@ -21,7 +21,6 @@
 (require 'init-package)
 (require 'init-basic)
 (require 'init-function)
-(require 'init-key_bindings)
 
 ;;=====================
 ;; 功能增强
@@ -29,20 +28,32 @@
 (require 'init-company)
 (require 'init-vertico)
 
-;; ;;=====================
-;; ;; UI
-;; ;;=====================
+;;=====================
+;; UI
+;;=====================
 (require 'init-ui)
+(require 'init-font)
+(require 'init-theme)
 
-;; ;;=====================
-;; ;; UI
-;; ;;=====================
+;;=====================
+;; LSP
+;;=====================
+(require 'init-c++)
 (require 'init-lsp)
+(require 'init-yasnippet)
+(require 'init-dap)
+
+;;=====================
+;; tools
+;;=====================
+(require 'init-tools)
+(require 'init-eaf)
+(require 'init-key_bindings)
 
 ;;=====================
 ;; 加载手动配置
 ;;=====================
 (setq custom-file (expand-file-name "~/.emacs.d/lisp/custom.el"))
 (load custom-file 'no-error 'no-message)
-
 ;;; init-config.el ends here
+(put 'dired-find-alternate-file 'disabled nil)

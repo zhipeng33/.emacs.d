@@ -11,26 +11,6 @@
 (setq recentf-max-menu-items 20)
 (set-default 'truncate-lines t)
 
-;; 系统判断
-(defconst *is-mac* (eq system-type 'darwin))
-(defconst *is-linux* (eq system-type 'gnu/linux))
-(defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt)))
-
-;; 通过修改字体解决 Windows 上 Emacs 的卡顿
-(use-package emacs
-  :if (display-graphic-p)
-  :config
-  ;; Font settings
-  (if *is-windows*
-      (progn
-	(set-face-attribute 'default nil :font "Microsoft Yahei Mono 9")
-	(dolist (charset '(kana han symbol cjk-misc bopomofo))
-          (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family "Microsoft Yahei Mono" :size 12))))
-    (set-face-attribute 'default nil :font (font-spec :family "Meslo LG S" :size 20)))) ;Meslo LG S 13, Sarasa Mono Slab SC
-
-(set-fontset-font t 'unicode (font-spec :family "Meslo LG S" :size 20))
-(set-fontset-font t '(#x2ff0 . #x9ffc) (font-spec :family "Sarasa Mono Slab SC" :size 20 :weight 'bold))
-
 ;; 解决可能出现的的字符乱码
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -40,7 +20,6 @@
 
 ;; yes-or-no-p to y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
-
 
 ;; 自动刷新被修改过的文件
 (global-auto-revert-mode +1)
@@ -95,16 +74,13 @@
 ;; 取消对齐创建的新行
 (global-set-key (kbd "S-<return>") 'comment-indent-new-line)
 
-;; 表示一个 tab 4个字符宽
-(setq-default  tab-width 4)
+(setq dired-kill-when-opening-new-dired-buffer t)
 
 ;; nil 表示将 tab 替换成空格
-(setq-default indent-tabs-mode nil)
+;; (setq-default indent-tabs-mode t)
 
-;; emacsclient
-;; (server-mode t)
-
-;; (setq initial-major-mode 'org-mode)
+;; tab-width
+(setq-default tab-width 4)
 
 ;; 历史记录
 (use-package savehist
@@ -127,6 +103,7 @@
 
 (setq url-proxy-services '(("https" . "127.0.0.1:8889")))
 
-
+(setq xref-search-program 'ripgrep)
+;; (advice-add #'project-find-regexp :override #'ripgrep-regexp)
 (provide 'init-basic)
 ;;; init-basic.el ends here

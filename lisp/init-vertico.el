@@ -6,7 +6,7 @@
 
 ;; VERTical Interactive COmpletion
 (use-package vertico
-  :hook (after-init . vertico-mode)  
+  :hook (after-init . vertico-mode)
   :init (vertico-mode t))
 
 ;; Optionally use the `orderless' completion style (模糊匹配)
